@@ -9,10 +9,10 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        coiny: ["Coiny", "system-ui"],
+        coiny: ["Bagel Fat One", "system-ui"],
       },
       colors: {
-        background: "var(--background)",
+        primary: "#07BCF5",
         foreground: "var(--foreground)",
       },
     },

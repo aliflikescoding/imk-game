@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Button from "@/components/button";
 
 export default function Home() {
   return (
@@ -7,7 +8,9 @@ export default function Home() {
       style={{ backgroundImage: "url('/background.svg')" }}
     >
       <div className="w-full h-full flex justify-center items-center">
-        <h1 className="font-coiny text-5xl">test</h1>
+        <Button>
+          Start
+        </Button>
       </div>
     </div>
   );
