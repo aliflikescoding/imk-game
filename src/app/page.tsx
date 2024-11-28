@@ -43,6 +43,7 @@ export default function Home() {
           <Button>Start</Button>
         </motion.div>
       </Link>
+      
     </div>
   );
 }

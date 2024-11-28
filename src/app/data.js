@@ -12,3 +12,30 @@ export const game_data = [
     link: "/game2",
   },
 ]
+
+export const game1_data = [
+  {
+    id: 0,
+    number: 1,
+    image_link: "/duck.svg",
+    audio: "/game1_one.mp3",
+    duration: 15,
+    highLightTime: 8,
+  },
+  {
+    id: 1,
+    number: 2,
+    image_link: "/chicken.svg",
+    audio: "/game1_two.mp3",
+    duration: 15,
+    highLightTime: 8,
+  },
+  {
+    id: 2,
+    number: 3,
+    image_link: "/tracktor.svg",
+    audio: "/game1_three.mp3",
+    duration: 15,
+    highLightTime: 8,
+  },
+]
