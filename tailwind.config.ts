@@ -9,7 +9,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        coiny: ["Modak", "system-ui"],
+        coiny: ["Coiny", "system-ui"],
       },
       colors: {
         background: "var(--background)",
