@@ -20,6 +20,15 @@ interface DataObject {
   highLightTime?: number;
 }
 
+interface ButtonProps {
+  textSize?: string;
+  onClick?: () => void;
+  disabled?: boolean;
+  className?: string | undefined; // Make sure it can accept undefined explicitly
+  children: React.ReactNode;
+}
+
+
 const getGameDataByNumber = (number: number): DataObject | undefined => {
   return game1_data.find((item) => item.number === number);
 };
@@ -32,12 +41,13 @@ const Page = () => {
   const [currentAudio, setCurrentAudio] = useState<HTMLAudioElement | null>(null);
   const [isInitialMount, setIsInitialMount] = useState<boolean>(true);
   const dataObject = getGameDataByNumber(number);
-  const { width, height } = useWindowSize();
+  const { width = 0, height = 0 } = useWindowSize();
   const [isWinner, setIsWinner] = useState<boolean>(false);
 
   const handleNext = () => {
     if (number >= 10) {
       setIsWinner(true);
+      return;
     }
 
     if (!isNextDisabled) {
@@ -96,7 +106,6 @@ const Page = () => {
   };
 
   const handleRestart = () => {
-    // Reinitialize the game state
     window.location.reload();
   };
 
@@ -117,7 +126,7 @@ const Page = () => {
 
       const timer = setInterval(() => {
         setTimeRemaining((prev) => {
-          if (prev === dataObject.highLightTime + 1) {
+          if (prev === (dataObject.highLightTime ?? 0) + 1) {
             setIsHighlighted(true);
             setTimeout(() => setIsHighlighted(false), 1000);
           }
@@ -138,24 +147,22 @@ const Page = () => {
   return (
     <>
       {isWinner && (
-        <>
-          <div className="fixed inset-0 bg-black text-white bg-opacity-50 flex justify-center items-center z-50">
-            <div className="bg-blue-300 p-8 rounded-lg text-center shadow-xl drop-shadow-md">
-              <h2 className="text-3xl font-bold mb-4">Congratulations!</h2>
-              <p className="mb-6 text-xl">You found the right number!</p>
-              <div className="flex flex-col gap-5">
-                <Button textSize="text-2xl" onClick={handleRestart}>
-                  Restart Game
-                  <IoMdRefresh className="text-2xl" />
-                </Button>
-                <Link href="/game-selection">
-                  <Button textSize="text-2xl">Back to game selection</Button>
-                </Link>
-              </div>
+        <div className="fixed inset-0 bg-black text-white bg-opacity-50 flex justify-center items-center z-50">
+          <div className="bg-blue-300 p-8 rounded-lg text-center shadow-xl drop-shadow-md">
+            <h2 className="text-3xl font-bold mb-4">Congratulations!</h2>
+            <p className="mb-6 text-xl">You found the right number!</p>
+            <div className="flex flex-col gap-5">
+              <Button textSize="text-2xl" onClick={handleRestart}>
+                Restart Game
+                <IoMdRefresh className="text-2xl" />
+              </Button>
+              <Link href="/game-selection">
+                <Button textSize="text-2xl">Back to game selection</Button>
+              </Link>
             </div>
-            <Confetti width={width} height={height} />
           </div>
-        </>
+          <Confetti width={width} height={height} />
+        </div>
       )}
       <div className="w-full h-full flex flex-col gap-5 justify-center items-center">
         <div className="flex gap-2 items-center">
@@ -186,7 +193,6 @@ const Page = () => {
           <Button
             onClick={handleNext}
             disabled={isNextDisabled}
-            className={isNextDisabled ? "opacity-50 cursor-not-allowed" : ""}
           >
             {isNextDisabled ? `Next (${timeRemaining}s)` : "Next"}
           </Button>
