@@ -5,6 +5,7 @@ interface ButtonProps {
   onClick?: () => void;
   disabled?: boolean;
   loading?: boolean;
+  textSize?: string;
 }
 
 export default function Button({
@@ -12,6 +13,7 @@ export default function Button({
   onClick,
   disabled,
   loading,
+  textSize,
 }: ButtonProps) {
   const handleClick = () => {
     // Play the click sound
@@ -26,10 +28,10 @@ export default function Button({
 
   return (
     <button
-      className="font-coiny
+      className={`font-coiny
         capitalize
         leading-[50px]
-        text-[40px]
+        ${textSize ? `${textSize}` : "text-[40px]"}
         px-[20px]
         pb-[10px]
         tracking-[2.5px]
@@ -49,7 +51,7 @@ export default function Button({
         items-center
         border-[5px]
         text-white
-        border-white"
+        border-white`}
       disabled={disabled}
       onClick={handleClick}
     >

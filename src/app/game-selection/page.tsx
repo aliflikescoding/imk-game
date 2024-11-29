@@ -17,7 +17,7 @@ const GameSelection = () => {
   };
 
   return (
-    <div className="w-full h-full flex gap-5 justify-center items-center">
+    <div className="w-full h-full flex gap-8 justify-center items-center">
       {game_data.map((game) => (
         <motion.div
           key={game.id}
@@ -31,8 +31,8 @@ const GameSelection = () => {
               <Image
                 src={`${game.image_link}`}
                 alt="game image"
-                width={200}
-                height={200}
+                width={250}
+                height={250}
               />
             </div>
           </Link>

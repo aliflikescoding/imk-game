@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import IconButton from "@/components/icon-button";
 import { IoMdArrowRoundBack } from "react-icons/io";
-import { game1_data } from "@/app/data.js";
+import { game1_data, game_image } from "@/app/data.js";
 import Button from "@/components/button";
 import Image from "next/image";
 
