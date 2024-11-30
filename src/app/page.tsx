@@ -16,7 +16,7 @@ export default function Home() {
         <motion.h1
           className="font-coiny text-7xl font-outline-2 flex justify-center mb-5"
           animate={{ rotate: [-10, 10, -10] }}
-          transition={{
+          transition={{ 
             duration: 2, // Adjust the duration for speed
             repeat: Infinity,
             ease: "easeInOut",

@@ -69,7 +69,7 @@ export const game1_data = [
     image_link: "/duck.svg",
     audio: "/game1_one.mp3",
     duration: 4,
-    highLightTime: 3,
+    highLightTime: 1,
   },
   {
     id: 1,
@@ -77,7 +77,7 @@ export const game1_data = [
     image_link: "/chicken.svg",
     audio: "/game1_two.mp3",
     duration: 4,
-    highLightTime: 2,
+    highLightTime: 1,
   },
   {
     id: 2,
@@ -85,7 +85,7 @@ export const game1_data = [
     image_link: "/tracktor.svg",
     audio: "/game1_three.mp3",
     duration: 4,
-    highLightTime: 2,
+    highLightTime: 1,
   },
   {
     id: 3,
@@ -93,7 +93,7 @@ export const game1_data = [
     image_link: "/haybail.svg",
     audio: "/game1_four.mp3",
     duration: 5,
-    highLightTime: 3,
+    highLightTime: 1,
   },
   {
     id: 4,
@@ -101,7 +101,7 @@ export const game1_data = [
     image_link: "/barn.svg",
     audio: "/game1_five.mp3",
     duration: 4,
-    highLightTime: 3,
+    highLightTime: 1,
   },
   {
     id: 5,
@@ -109,7 +109,7 @@ export const game1_data = [
     image_link: "/pig.svg",
     audio: "/game1_six.mp3",
     duration: 4,
-    highLightTime: 2,
+    highLightTime: 1,
   },
   {
     id: 6,
@@ -117,7 +117,7 @@ export const game1_data = [
     image_link: "/cow.svg",
     audio: "/game1_seven.mp3",
     duration: 4,
-    highLightTime: 2,
+    highLightTime: 1,
   },
   {
     id: 7,
@@ -125,7 +125,7 @@ export const game1_data = [
     image_link: "/sheep.svg",
     audio: "/game1_eight.mp3",
     duration: 4,
-    highLightTime: 3,
+    highLightTime: 1,
   },
   {
     id: 8,
@@ -133,7 +133,7 @@ export const game1_data = [
     image_link: "/farmer.svg",
     audio: "/game1_nine.mp3",
     duration: 4,
-    highLightTime: 2,
+    highLightTime: 1,
   },
   {
     id: 9,
@@ -141,6 +141,6 @@ export const game1_data = [
     image_link: "/fork.svg",
     audio: "/game1_ten.mp3",
     duration: 4,
-    highLightTime: 2,
+    highLightTime: 1,
   },
 ]

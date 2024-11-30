@@ -28,7 +28,6 @@ interface ButtonProps {
   children: React.ReactNode;
 }
 
-
 const getGameDataByNumber = (number: number): DataObject | undefined => {
   return game1_data.find((item) => item.number === number);
 };
@@ -38,7 +37,9 @@ const Page = () => {
   const [isNextDisabled, setIsNextDisabled] = useState<boolean>(false);
   const [timeRemaining, setTimeRemaining] = useState<number>(0);
   const [isHighlighted, setIsHighlighted] = useState<boolean>(false);
-  const [currentAudio, setCurrentAudio] = useState<HTMLAudioElement | null>(null);
+  const [currentAudio, setCurrentAudio] = useState<HTMLAudioElement | null>(
+    null
+  );
   const [isInitialMount, setIsInitialMount] = useState<boolean>(true);
   const dataObject = getGameDataByNumber(number);
   const { width = 0, height = 0 } = useWindowSize();
@@ -116,21 +117,24 @@ const Page = () => {
       audio.play();
       setIsInitialMount(false);
     }
-
+  
     setIsNextDisabled(false);
     setIsHighlighted(false);
-
-    if (dataObject?.duration) {
+  
+    if (dataObject?.duration !== undefined) {
       setIsNextDisabled(true);
       setTimeRemaining(dataObject.duration);
-
+  
       const timer = setInterval(() => {
         setTimeRemaining((prev) => {
-          if (prev === (dataObject.highLightTime ?? 0) + 1) {
+          const highLightTime = dataObject.highLightTime ?? 0;
+  
+          // Check if we've reached or passed the highlight time
+          if (prev <= (dataObject.duration ?? 0) - highLightTime) {
             setIsHighlighted(true);
             setTimeout(() => setIsHighlighted(false), 1000);
           }
-
+  
           if (prev <= 1) {
             clearInterval(timer);
             setIsNextDisabled(false);
@@ -139,7 +143,7 @@ const Page = () => {
           return prev - 1;
         });
       }, 1000);
-
+  
       return () => clearInterval(timer);
     }
   }, [number, dataObject, isInitialMount]);
@@ -164,9 +168,9 @@ const Page = () => {
           <Confetti width={width} height={height} />
         </div>
       )}
-      <div className="w-full h-full flex flex-col gap-5 justify-center items-center">
+      <div className="w-full h-full flex flex-col text-red-500 font-outline-2 gap-5 justify-center items-center">
         <div className="flex gap-2 items-center">
-          <h1 className="text-7xl bg-white px-6 py-3 font-coiny rounded-md">
+          <h1 className="text-[120px] px-6 py-3 font-coiny rounded-md">
             {number}
           </h1>
           <div className="grid grid-cols-3 bg-white gap-3 p-4 rounded-md">
@@ -178,7 +182,9 @@ const Page = () => {
                   alt="number image"
                   width={100}
                   height={100}
-                  className={isHighlighted ? "bg-yellow-300 p-2 rounded-md" : ""}
+                  className={
+                    isHighlighted ? "bg-yellow-300 p-2 rounded-md" : ""
+                  }
                 />
               ))
             ) : (
@@ -190,10 +196,7 @@ const Page = () => {
           {!isNextDisabled && number > 1 && (
             <Button onClick={handlePrevious}>Previous</Button>
           )}
-          <Button
-            onClick={handleNext}
-            disabled={isNextDisabled}
-          >
+          <Button onClick={handleNext} disabled={isNextDisabled}>
             {isNextDisabled ? `Next (${timeRemaining}s)` : "Next"}
           </Button>
         </div>
